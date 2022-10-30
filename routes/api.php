@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\api\Test5Controller;
+use App\Http\Controllers\api\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/test', fn(Request $request) => "hello world!");
+Route::get('/testss', [TestController::class, "index"]);
+Route::get('test/abc', [TestController::class, 'abc']);
+
+Route::apiResource('test', TestController::class);
+Route::apiResource('test5', Test5Controller::class);
